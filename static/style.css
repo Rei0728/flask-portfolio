@@ -161,28 +161,26 @@ footer {
   font-size: 1.2em;
 }
 
-.social-popup {
-  position: fixed;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
+/* バツボタンの基本スタイル */
 .close-btn {
   background: none;
   border: none;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #333;
+  font-size: 18px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
-  align-self: flex-end;
-  margin-bottom: 5px;
+  display: none; /* デフォルトは非表示 */
+}
+
+/* モバイル時のみ表示 */
+@media (max-width: 768px) {
+  .close-btn {
+    display: block;
+  }
+
+  .social-icon-large {
+    width: 80px;
+    height: 80px;
+  }
 }
