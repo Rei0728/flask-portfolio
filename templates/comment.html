@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>コメント</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header>
+    <h1>コメント</h1>
+    <p>ぜひ応援コメント書いてください！！</p>
+  </header>
+
+  <!-- ナビゲーションの読み込み位置 -->
+  {% include 'nav.html' %}
+
+  <script>
+  fetch("/static/nav.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav-placeholder").innerHTML = data;
+    });
+  </script>
+
+<main>
+  <form id="comment-form">
+    <input type="text" name="username" placeholder="名前" required />
+    <textarea name="comment" placeholder="コメント" required></textarea>
+    <button type="submit">送信</button>
+  </form>
+
+  <div id="comments-list">
+    <!-- コメント表示エリア -->
+  </div>
+</main>
+
+  <footer>
+    <p><a href="index.html">ホームへ戻る</a></p>
+    <p>&copy; 2025 R</p>
+  </footer>
+
+  <!-- JavaScriptをここに追加 -->
+  <script>
+    async function loadComments() {
+      const res = await fetch('/comments');
+      const comments = await res.json();
+      const container = document.getElementById('comments-list');
+      container.innerHTML = comments.map(c =>
+        `<p><strong>${c.username}</strong>（${new Date(c.created_at).toLocaleString()}）:<br>${c.comment}</p>`
+      ).join('');
+    }
+
+    document.getElementById('comment-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        username: form.username.value,
+        comment: form.comment.value,
+      };
+      await fetch('/comments', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+      });
+      form.reset();
+      loadComments();
+    });
+
+    loadComments();
+  </script>
+
+  <div class="social-links right">
+    <a href="https://www.instagram.com/rei07_28/" target="_blank">
+      <img src="{{ url_for('static', filename='instagram_icon.png') }}" alt="Instagram" class="social-icon-large" />
+      <span>Instagram</span>
+    </a>
+  </div>
+
+</body>
+</html>

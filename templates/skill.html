@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>スキル紹介</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header>
+    <h1>スキル紹介</h1>
+    <p>私がこれまでに習得してきたスキルを紹介します。</p>
+  </header>
+
+<!-- ナビゲーションの読み込み位置 -->
+{% include 'nav.html' %}
+
+<!-- JavaScriptでnav.htmlを読み込み -->
+  <script>
+  fetch("/static/nav.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav-placeholder").innerHTML = data;
+    });
+  </script>
+
+  <main>
+    <section class="skill-category">
+      <h2>プログラミング言語</h2>
+      <ul>
+        <li>HTML / CSS（Webページの構築とデザイン）</li>
+        <li>JavaScript（フロントエンド開発）</li>
+        <li>Python（自動化、データ処理、Webバックエンド）</li>
+        <li>Java（自動化、データ処理、Webバックエンド）</li>
+        <li>SQL（データベース操作）</li>
+      </ul>
+    </section>
+
+    <section class="skill-category">
+      <h2>フレームワーク・ライブラリ</h2>
+      <ul>
+        <li>Django / Flask（Pythonバックエンド）</li>
+        <li>Bootstrap / Tailwind CSS（UIデザイン）</li>
+      </ul>
+    </section>
+
+    <section class="skill-category">
+      <h2>ツール・サービス</h2>
+      <ul>
+        <li>Git / GitHub（バージョン管理）</li>
+        <li>Figma / Adobe XD（UI/UXデザイン）</li>
+        <li>VSCode / PyCharm（開発エディタ）</li>
+        <li>Linux / CLI（基本操作）</li>
+      </ul>
+    </section>
+
+    <section class="skill-category">
+      <h2>その他</h2>
+      <ul>
+        <li>チーム開発経験（Gitを用いた共同作業）</li>
+        <li>日本語・英語でのドキュメント作成</li>
+        <li>基本的なSEO・レスポンシブ対応</li>
+      </ul>
+    </section>
+
+      <section class="skill-category">
+    <h2>IT系保有資格</h2>
+    <ul>
+      <li>基本情報技術者試験（FE）</li>
+      <li>AWS CLF（クラウドプラクティショナー）</li>
+    </ul>
+  </section>
+
+  </main>
+
+  <footer>
+    <p><a href="index.html">ホームへ戻る</a></p>
+    <p>&copy; 2025 R</p>
+  </footer>
+
+  <div class="social-links right">
+    <a href="https://www.instagram.com/rei07_28/" target="_blank">
+      <img src="{{ url_for('static', filename='instagram_icon.png') }}" alt="Instagram" class="social-icon-large" />
+      <span>Instagram</span>
+    </a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>私のホームページ</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header>
+    <h1>私のホームページ</h1>
+    <p>ようこそ！ここは私の個人サイトです。</p>
+  </header>
+
+  <!-- ナビゲーションの読み込み位置 -->
+  {% include 'nav.html' %}
+
+  <!-- JavaScriptでnav.htmlを読み込み -->
+  <script>
+  fetch("/static/nav.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav-placeholder").innerHTML = data;
+    });
+  </script>
+
+  <main>
+    <section id="about">
+      <h2>自己紹介</h2>
+      <p>こんにちは！Rと申します。Web開発やデザインに興味があります。趣味はヘアセットとゲームとアニメ鑑賞です。</p>
+      <img src="{{ url_for('static', filename='my_photo.jpg') }}" alt="プロフィール写真" class="profile-photo" />
+    </section>
+    <div class="message-box">
+  <p>現在、IT企業1年目の会社員です！<br>
+  練習としてこの自己紹介サイトを作ってみました。</p>
+</div>
+  </main>
+
+  <footer>
+    &copy; 2025 R All rights reserved.
+  </footer>
+
+  <div class="social-links right">
+    <a href="https://www.instagram.com/rei07_28/" target="_blank">
+      <img src="{{ url_for('static', filename='instagram_icon.png') }}" alt="Instagram" class="social-icon-large" />
+      <span>Instagram</span>
+    </a>
+  </div>
+
+</body>
+</html>
