@@ -138,8 +138,9 @@ footer {
 }
 
 .social-icon-large {
-  width: 240px;
-  height: 240px;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
 }
 
 .social-links.right a {
