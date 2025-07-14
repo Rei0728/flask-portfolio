@@ -41,12 +41,13 @@
     &copy; 2025 R All rights reserved.
   </footer>
 
-  <div class="social-links right">
-    <a href="https://www.instagram.com/rei07_28/" target="_blank">
-      <img src="{{ url_for('static', filename='instagram_icon.png') }}" alt="Instagram" class="social-icon-large" />
-      <span>Instagram</span>
-    </a>
-  </div>
+<div class="social-popup" id="socialPopup">
+  <button class="close-btn" onclick="closePopup()">×</button>
+  <a href="https://www.instagram.com/rei07_28/" target="_blank">
+    <img src="{{ url_for('static', filename='instagram_icon.png') }}" alt="Instagram" class="social-icon-large" />
+    <span>Instagram</span>
+  </a>
+</div>
 
 </body>
 </html>
