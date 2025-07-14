@@ -145,8 +145,8 @@ footer {
 /* スマホ画面では小さくする */
 @media (max-width: 768px) {
   .social-icon-large {
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 15px;
   }
 }
 
