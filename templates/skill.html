@@ -79,24 +79,36 @@
     <p>&copy; 2025 R</p>
   </footer>
 
-<div class="social-popup" id="socialPopup">
-  <button class="close-btn" onclick="closePopup()">×</button>
+<div id="socialPopup" class="social-links right">
   <a href="https://www.instagram.com/rei07_28/" target="_blank">
     <img src="{{ url_for('static', filename='instagram_icon.png') }}" alt="Instagram" class="social-icon-large" />
     <span>Instagram</span>
   </a>
+  <!-- バツボタンはモバイルだけに表示 -->
+  <button id="closeBtn" class="close-btn">×</button>
 </div>
 
 <script>
   function closePopup() {
     const popup = document.getElementById("socialPopup");
-    popup.style.display = "none";
 
-    // 5秒後に再表示
-    setTimeout(() => {
-      popup.style.display = "flex";
-    }, 10000);
+    // スマホサイズのみ処理
+    if (window.innerWidth <= 768) {
+      popup.style.display = "none";
+
+      // 10秒後に再表示
+      setTimeout(() => {
+        popup.style.display = "flex";
+      }, 10000);
+    }
   }
+
+  // スマホだけイベントリスナー追加
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.innerWidth <= 768) {
+      document.getElementById("closeBtn").addEventListener("click", closePopup);
+    }
+  });
 </script>
 
 </body>
